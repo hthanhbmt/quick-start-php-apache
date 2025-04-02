@@ -1,0 +1,30 @@
+services:
+  coji-php-apache:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+      - ./apache/sites-available:/etc/apache2/sites-available
+    # depends_on:
+    #   - mysql
+    extra_hosts:
+      - "testlocal.com:127.0.0.1"
+      - "testdomainlocal.com:127.0.0.1"
+
+#   mysql:
+#     image: mysql:5.5
+#     container_name: mysql_db
+#     restart: always
+#     environment:
+#       MYSQL_ROOT_PASSWORD: root
+#       MYSQL_DATABASE: koji_database
+#       MYSQL_USER: user
+#       MYSQL_PASSWORD: root
+#     ports:
+#       - "3307:3306"
+#     volumes:
+#       - mysql_data:/var/lib/mysql
+
+# volumes:
+#   mysql_data:
